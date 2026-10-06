@@ -4,364 +4,664 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayesha Razzaq | Junior Web Developer Portfolio</title>
+    <title>Ayesha Razzaq | Junior Web Developer</title>
+    <meta name="description"
+        content="Portfolio of Ayesha Razzaq, a junior web developer from Karachi skilled in HTML, CSS, JavaScript, PHP, Laravel and MySQL.">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Colors */
+        :root {
+            --ink: #0f172a;
+            --ink-2: #1e293b;
+            --accent: #38bdf8;
+            --accent-d: #0369a1;
+            --line: #e2e8f0;
+            --text: #0f172a;
+            --muted: #64748b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.02em;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* Navigation */
+        .site-nav {
+            background: var(--ink);
+            border-bottom: 1px solid var(--ink-2);
+        }
+
+        .brand {
+            font: 600 1.1rem 'JetBrains Mono', monospace;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .site-nav .nav-link {
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: .95rem;
+        }
+
+        .site-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        /* Buttons */
+        .btn-main,
+        .btn-line {
+            display: inline-block;
+            padding: 11px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1.5px solid var(--accent);
+            transition: background .2s, color .2s;
+            cursor: pointer;
+        }
+
+        .btn-main {
+            background: var(--accent);
+            color: var(--ink);
+        }
+
+        .btn-main:hover {
+            background: #7dd3fc;
+            border-color: #7dd3fc;
+            color: var(--ink);
+        }
+
+        .btn-line {
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-line:hover {
+            background: var(--accent);
+            color: var(--ink);
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--ink);
+            color: #fff;
+            padding: 140px 0 100px;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p.sub {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 33rem;
+        }
+
+        .chip {
+            display: inline-block;
+            padding: 3px 12px;
+            margin: 0 6px 8px 0;
+            border-radius: 6px;
+            font-size: .82rem;
+            background: var(--ink-2);
+            color: #cbd5e1;
+            border: 1px solid #334155;
+        }
+
+        .code-card {
+            background: #0b1220;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .code-bar {
+            padding: 10px 16px;
+            background: var(--ink-2);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .code-bar i {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #475569;
+            display: block;
+        }
+
+        .code-bar small {
+            margin-left: 10px;
+            color: #94a3b8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .code-card pre {
+            margin: 0;
+            padding: 22px;
+            color: #e2e8f0;
+            font: 400 .9rem/1.8 'JetBrains Mono', monospace;
+            overflow-x: auto;
+        }
+
+        .code-card .k {
+            color: #c4b5fd;
+        }
+
+        .code-card .p {
+            color: var(--accent);
+        }
+
+        .code-card .s {
+            color: #86efac;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+
+        .narrow {
+            max-width: 44rem;
+        }
+
+        /* About */
+        .facts {
+            margin: 0;
+            font-size: .95rem;
+        }
+
+        .facts dt {
+            font-weight: 600;
+            margin-top: 14px;
+        }
+
+        .facts dt:first-child {
+            margin-top: 0;
+        }
+
+        .facts dd {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        /* Skills */
+        .skill-row {
+            display: flex;
+            gap: 20px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .skill-row:last-child {
+            border-bottom: 0;
+        }
+
+        .skill-row strong {
+            width: 120px;
+            flex-shrink: 0;
+        }
+
+        .skill-row span {
+            color: #334155;
+        }
+
+        /* Projects */
+        .repos {
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .repos-head {
+            background: var(--ink);
+            color: #94a3b8;
+            padding: 12px 20px;
+            font: 500 .9rem 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .repos-head b {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .repo {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            padding: 24px 20px;
+            border-top: 1px solid var(--line);
+        }
+
+        .repos-head+.repo {
+            border-top: 0;
+        }
+
+        .repo-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .repo-name {
+            font: 600 1.1rem 'JetBrains Mono', monospace;
+            color: var(--accent-d);
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .repo-name:hover {
+            text-decoration: underline;
+        }
+
+        .repo-name i {
+            margin-right: 8px;
+            color: var(--muted);
+        }
+
+        .pill {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 0 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            font-size: .75rem;
+            font-weight: 500;
+            color: var(--muted);
+            vertical-align: middle;
+        }
+
+        .repo-desc {
+            margin: 8px 0 12px;
+            color: #475569;
+            font-size: .95rem;
+        }
+
+        .techs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            font-size: .85rem;
+            color: var(--muted);
+        }
+
+        .techs span::before {
+            content: '';
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--c);
+            margin-right: 6px;
+            vertical-align: -1px;
+        }
+
+        .repo-shot {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            object-position: top;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .repo-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .repo-btn {
+            display: inline-block;
+            padding: 5px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: #f8fafc;
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .repo-btn:hover {
+            border-color: var(--accent-d);
+            color: var(--accent-d);
+        }
+
+        .repo-btn i {
+            margin-right: 6px;
+        }
+
+        @media (max-width: 767px) {
+            .repo {
+                flex-wrap: wrap;
+            }
+
+            .repo-shot {
+                display: none;
+            }
+
+            .repo-actions {
+                flex-direction: row;
+            }
+        }
+
+        /* Contact */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 8px;
+        }
+
+        .contact-list li {
+            margin-bottom: 8px;
+        }
+
+        .contact-list i {
+            color: var(--accent-d);
+            margin-right: 10px;
+        }
+
+        .contact-list a {
+            color: var(--text);
+        }
+
+        .btn-line.on-light {
+            border-color: var(--ink);
+            color: var(--ink);
+        }
+
+        .btn-line.on-light:hover {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        footer {
+            background: var(--ink);
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px 0;
+            font-size: .88rem;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark site-nav fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                Ayesha<span class="text-info">.dev</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="brand" href="#home">ayesha<span>.dev</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-lg-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                <ul class="navbar-nav ms-auto gap-lg-3 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn-line py-1 px-3" href="Ayesha_Razzaq_Resume.pdf"
+                            target="_blank" rel="noopener">Resume</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Navbar End -->
 
-    <!-- Hero Section Start -->
-    <section id="home" class="hero-section">
+    <header id="home" class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <div class="hero-badge mb-3">
-                        <i class="bi bi-code-slash me-1"></i> Full Stack & Frontend Developer
-                    </div>
-                    <h1 class="display-4 fw-bold">
-                        Ayesha Razzaq
-                    </h1>
-                    <h2 class="h4 text-info mb-3 fw-normal">
-                        Junior Web Developer
-                    </h2>
-                    <p class="lead text-light opacity-75 mb-4">
-                        Dedicated Junior Web Developer focused on building high-performance responsive websites across 3
-                        core projects, writing clean scalable code, and developing database-driven web applications.
-                    </p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#projects" class="btn btn-custom-primary">
-                            <i class="bi bi-folder-check me-1"></i> View Projects
-                        </a>
-                        <a href="Ayesha's resume(3).pdf" target="_blank" class="btn btn-custom-outline">
-                            <i class="bi bi-eye me-1"></i> View resume
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 text-center mt-5 mt-lg-0">
-                    <div class="p-4 rounded-circle bg-dark bg-opacity-50 d-inline-block border border-secondary">
-                        <i class="bi bi-laptop display-1 text-info"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
-    <!-- About Section Start -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center py-4">
-                <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                    <i class="bi bi-person-workspace display-1 text-primary"></i>
-                </div>
-
-                <div class="col-lg-8">
-                    <h2 class="fw-bold text-dark mb-3">
-                        About Me
-                    </h2>
-                    <p class="lead text-secondary">
-                        I am currently pursuing a <strong>Diploma in Information Technology (DIT - 3rd
-                            Semester)</strong> at <strong>Aptech Computer Education</strong>, Karachi.
-                    </p>
-                    <p class="text-muted">
-                        I specialize in creating clean, responsive frontend interfaces and robust backend solutions
-                        utilizing PHP, SQL, SQLite, and Laravel. My primary focus is on developing database-driven web
-                        applications, structuring clean code, and building fast cross-browser web interfaces.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section End -->
-
-    <!-- Skills Section Start -->
-    <section id="skills" class="py-5">
-        <div class="container py-3">
-            <h2 class="text-center fw-bold mb-2">Technical Skills</h2>
-            <p class="text-center text-muted mb-5">Technologies and tools I work with daily</p>
-
-            <div class="row g-4">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-filetype-html fs-1 text-danger"></i>
-                        <h6 class="mt-3 fw-bold">HTML5 & CSS3</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-filetype-js fs-1 text-warning"></i>
-                        <h6 class="mt-3 fw-bold">JavaScript</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-bootstrap fs-1 text-primary"></i>
-                        <h6 class="mt-3 fw-bold">Bootstrap 5</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-filetype-php fs-1 text-primary"></i>
-                        <h6 class="mt-3 fw-bold">PHP & SQL</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-layers-fill fs-1 text-danger"></i>
-                        <h6 class="mt-3 fw-bold">Laravel & Breeze</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-database-fill-gear fs-1 text-info"></i>
-                        <h6 class="mt-3 fw-bold">MySQL & SQLite</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-github fs-1 text-dark"></i>
-                        <h6 class="mt-3 fw-bold">Git & GitHub</h6>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="skill-card text-center p-4 shadow-sm h-100">
-                        <i class="bi bi-phone fs-1 text-success"></i>
-                        <h6 class="mt-3 fw-bold">Responsive Design</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Skills Section End -->
-
-    <!-- Projects Section Start -->
-    <section id="projects" class="py-5 bg-light">
-        <div class="container py-3">
-            <h2 class="text-center fw-bold mb-2">Featured Projects</h2>
-            <p class="text-center text-muted mb-5">Core projects demonstrating frontend and full-stack capabilities</p>
-
-            <div class="row g-4 justify-content-center">
-
-                <!-- Project 1: Student Management System -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-card shadow-sm h-100">
-                        <div class="card-body p-4 d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-person-vcard fs-2 text-primary me-2"></i>
-                                    <span
-                                        class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill">Full
-                                        Stack</span>
-                                </div>
-                                <h5 class="card-title fw-bold">Student Management System</h5>
-                                <p class="text-muted small">Full Stack Developer</p>
-                                <p class="card-text text-secondary small">
-                                    Developed dynamic Student Data Forms using Laravel Breeze & SQLite to execute
-                                    backend CRUD operations efficiently with role-based user authentication.
-                                </p>
-                            </div>
-                            <div class="mt-4">
-                                <div class="mb-3 d-flex flex-wrap gap-1">
-                                    <span class="badge bg-danger badge-tech">Laravel</span>
-                                    <span class="badge bg-secondary badge-tech">SQLite</span>
-                                    <span class="badge bg-dark badge-tech">Breeze</span>
-                                </div>
-                                <a href="https://github.com/ayesharazzaq239/student-management-system" target="_blank"
-                                    class="btn btn-outline-dark btn-sm w-100 fw-medium">
-                                    <i class="bi bi-github me-1"></i> View Repository
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: EBook System Web Application -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-card shadow-sm h-100">
-                        <div class="card-body p-4 d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-book fs-2 text-success me-2"></i>
-                                    <span
-                                        class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">Full
-                                        Stack</span>
-                                </div>
-                                <h5 class="card-title fw-bold">EBook System Web App</h5>
-                                <p class="text-muted small">Full Stack Developer</p>
-                                <p class="card-text text-secondary small">
-                                    Full-stack web application built with PHP and MySQL. Structured database tables to
-                                    manage digital book records and handle CRUD operations efficiently.
-                                </p>
-                            </div>
-                            <div class="mt-4">
-                                <div class="mb-3 d-flex flex-wrap gap-1">
-                                    <span class="badge bg-primary badge-tech">PHP</span>
-                                    <span class="badge bg-dark badge-tech">MySQL</span>
-                                    <span class="badge bg-info text-dark badge-tech">Bootstrap</span>
-                                </div>
-                                <a href="https://github.com/ayesharazzaq239/EBook-System" target="_blank"
-                                    class="btn btn-outline-dark btn-sm w-100 fw-medium">
-                                    <i class="bi bi-github me-1"></i> View Repository
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Safe Carz Insurance -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-card shadow-sm h-100">
-                        <div class="card-body p-4 d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="bi bi-shield-check fs-2 text-info me-2"></i>
-                                    <span
-                                        class="badge bg-info-subtle text-info border border-info-subtle rounded-pill">Frontend</span>
-                                </div>
-                                <h5 class="card-title fw-bold">Safe Carz - Insurance Website</h5>
-                                <p class="text-muted small">Frontend Developer</p>
-                                <p class="card-text text-secondary small">
-                                    Modern multi-page interface for a vehicle insurance website using HTML5, CSS3, and
-                                    Bootstrap with interactive quote request forms.
-                                </p>
-                            </div>
-                            <div class="mt-4">
-                                <div class="mb-3 d-flex flex-wrap gap-1">
-                                    <span class="badge bg-danger badge-tech">HTML5</span>
-                                    <span class="badge bg-primary badge-tech">CSS3</span>
-                                    <span class="badge bg-info text-dark badge-tech">Bootstrap</span>
-                                </div>
-                                <a href="https://github.com/ayesharazzaq239/SAFE-CARZ" target="_blank"
-                                    class="btn btn-outline-dark btn-sm w-100 fw-medium">
-                                    <i class="bi bi-github me-1"></i> View Repository
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- Projects Section End -->
-
-    <!-- Contact Section Start -->
-    <section id="contact" class="py-5">
-        <div class="container py-3">
-            <h2 class="text-center fw-bold mb-2">Get In Touch</h2>
-            <p class="text-center text-muted mb-4">Feel free to reach out for opportunities or inquiries</p>
-
-            <div class="row justify-content-center">
-                <div class="col-lg-6 text-center mb-4">
-                    <div class="d-flex justify-content-center gap-3 mb-3">
-                        <a href="https://github.com/ayesharazzaq239" target="_blank"
-                            class="btn btn-dark btn-lg rounded-circle">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a href="mailto:abdulrazzaqayesha149@gmail.com" class="btn btn-primary btn-lg rounded-circle">
-                            <i class="bi bi-envelope-fill"></i>
-                        </a>
-                    </div>
-                    <p class="text-secondary fw-medium">abdulrazzaqayesha149@gmail.com | Karachi, Pakistan</p>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-custom-primary w-100">
-                            Send Message
-                        </button>
-                    </form>
+                    <h1>Hi, I'm Ayesha.<br>I build <span>web applications</span> with PHP and Laravel.</h1>
+                    <p class="sub my-4">
+                        Junior web developer from Karachi. I create responsive websites and database-driven
+                        applications using HTML, CSS, JavaScript, PHP and MySQL.
+                    </p>
+                    <div class="mb-4 mono">
+                        <span class="chip">Laravel</span><span class="chip">PHP</span><span class="chip">MySQL</span>
+                        <span class="chip">JavaScript</span><span class="chip">Bootstrap</span>
+                    </div>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#projects" class="btn-main">View projects</a>
+                        <a href="#contact" class="btn-line">Contact me</a>
+                    </div>
+                </div>
 
-                    <div id="formAlert" class="alert alert-success mt-3 d-none" role="alert">
-                        Thank you! Your message has been sent successfully.
+                <div class="col-lg-6">
+                    <div class="code-card">
+                        <div class="code-bar"><i></i><i></i><i></i><small>ayesha.js</small></div>
+                        <pre><span class="k">const</span> ayesha = {
+  <span class="p">role</span>: <span class="s">"Junior Web Developer"</span>,
+  <span class="p">location</span>: <span class="s">"Karachi, Pakistan"</span>,
+  <span class="p">education</span>: <span class="s">"DIT, Aptech"</span>,
+  <span class="p">stack</span>: [<span class="s">"HTML"</span>, <span class="s">"CSS"</span>, <span class="s">"JavaScript"</span>,
+          <span class="s">"PHP"</span>, <span class="s">"Laravel"</span>, <span class="s">"MySQL"</span>],
+  <span class="p">openTo</span>: <span class="s">"Internships &amp; junior roles"</span>
+};</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About</h2>
+            <div class="row g-5">
+                <div class="col-lg-7">
+                    <p>
+                        I'm Ayesha, a web developer in training from Karachi. I'm in the third semester of my
+                        Diploma in IT at Aptech, and I build web projects alongside my classes.
+                    </p>
+                    <p>
+                        I did my HSC in Pre-Medical and then switched to IT. Since then I've made a student
+                        management system in Laravel, an e-book app in PHP and MySQL, and a multi-page insurance
+                        website in plain HTML, CSS and Bootstrap. So I've worked on both the frontend and the
+                        database side of a website.
+                    </p>
+                    <p class="mb-0">
+                        I'm looking for an internship or junior role where I can keep learning by working on real
+                        projects.
+                    </p>
+                </div>
+                <div class="col-lg-5">
+                    <dl class="facts">
+                        <dt>Based in</dt>
+                        <dd>Karachi, Pakistan</dd>
+                        <dt>Studying</dt>
+                        <dd>Diploma in Information Technology, Aptech Computer Education (since 08/2025)</dd>
+                        <dt>Before that</dt>
+                        <dd>HSC Pre-Medical, KMA Girls Degree College (2021 to 2023)</dd>
+                        <dt>Looking for</dt>
+                        <dd>Internship or junior web developer role</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Technologies Used</h2>
+            <div class="narrow">
+                <div class="skill-row"><strong>Frontend</strong><span>HTML5, CSS3, JavaScript, Bootstrap</span></div>
+                <div class="skill-row"><strong>Backend</strong><span>PHP, Laravel (with Breeze for login)</span></div>
+                <div class="skill-row"><strong>Databases</strong><span>SQL, MySQL, SQLite</span></div>
+                <div class="skill-row"><strong>Tools</strong><span>Git, GitHub</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="repos">
+                <div class="repos-head"><span><b>ayesharazzaq239</b> / projects</span><span>3 repositories</span></div>
+
+                <div class="repo">
+                    <div class="repo-main">
+                        <a class="repo-name" href="https://github.com/ayesharazzaq239/student-management-system"
+                            target="_blank" rel="noopener"><i
+                                class="bi bi-journal-code"></i>student-management-system</a>
+                        <span class="pill">Full stack</span>
+                        <p class="repo-desc">
+                            <strong>My contribution:</strong> Built the create, view, edit and delete features for
+                            student records, with login access levels for different users.
+                            <br><strong>Technical choices:</strong> Laravel for the application and SQLite for the
+                            database.
+                        </p>
+                        <div class="techs"><span style="--c:#ff2d20">Laravel</span><span
+                                style="--c:#4f5d95">PHP</span><span style="--c:#0f80cc">SQLite</span></div>
+                    </div>
+                    <img class="repo-shot" src="images/student-management.png"
+                        alt="Student Management System screenshot" loading="lazy" onerror="this.style.display='none'">
+                    <div class="repo-actions">
+                        <a class="repo-btn" href="https://github.com/ayesharazzaq239/student-management-system"
+                            target="_blank" rel="noopener"><i class="bi bi-github"></i>Code</a>
+                    </div>
+                </div>
+
+                <div class="repo">
+                    <div class="repo-main">
+                        <a class="repo-name" href="https://github.com/ayesharazzaq239/EBook-System" target="_blank"
+                            rel="noopener"><i class="bi bi-journal-code"></i>EBook-System</a>
+                        <span class="pill">Full stack</span>
+                        <p class="repo-desc">
+                            <strong>My contribution:</strong> Built secure login and book-record management features.
+                            <br><strong>Technical choices:</strong> PHP and MySQL for the app and data, with Bootstrap
+                            for
+                            responsive pages.
+                        </p>
+                        <div class="techs"><span style="--c:#4f5d95">PHP</span><span
+                                style="--c:#00758f">MySQL</span><span style="--c:#7952b3">Bootstrap</span></div>
+                    </div>
+                    <img class="repo-shot" src="images/ebook-system.png" alt="EBook System screenshot" loading="lazy"
+                        onerror="this.style.display='none'">
+                    <div class="repo-actions">
+                        <a class="repo-btn" href="https://github.com/ayesharazzaq239/EBook-System" target="_blank"
+                            rel="noopener"><i class="bi bi-github"></i>Code</a>
+                    </div>
+                </div>
+
+                <div class="repo">
+                    <div class="repo-main">
+                        <a class="repo-name" href="https://github.com/ayesharazzaq239/SAFE-CARZ" target="_blank"
+                            rel="noopener"><i class="bi bi-journal-code"></i>SAFE-CARZ</a>
+                        <span class="pill">Frontend</span>
+                        <p class="repo-desc">
+                            <strong>My contribution:</strong> Built a multi-page vehicle insurance site with custom
+                            navigation and a quote request form.
+                            <br><strong>Technical choices:</strong> HTML and CSS for the pages, with Bootstrap for the
+                            responsive layout.
+                        </p>
+                        <div class="techs"><span style="--c:#e34c26">HTML5</span><span
+                                style="--c:#563d7c">CSS3</span><span style="--c:#7952b3">Bootstrap</span></div>
+                    </div>
+                    <img class="repo-shot" src="images/safe-carz.png" alt="Safe Carz website screenshot" loading="lazy"
+                        onerror="this.style.display='none'">
+                    <div class="repo-actions">
+                        <a class="repo-btn" href="https://github.com/ayesharazzaq239/SAFE-CARZ" target="_blank"
+                            rel="noopener"><i class="bi bi-github"></i>Code</a>
+                        <a class="repo-btn" href="https://ayesharazzaq239.github.io/SAFE-CARZ/" target="_blank"
+                            rel="noopener"><i class="bi bi-box-arrow-up-right"></i>Live demo</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contact Section End -->
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 border-top border-secondary">
+    <section id="contact" class="section">
         <div class="container">
-            <p class="mb-0 small text-light opacity-75">&copy; 2026 Ayesha Razzaq. All rights reserved.</p>
+            <h2>Contact</h2>
+            <div class="narrow">
+                <p>If you have an opening for a junior developer or an internship, I'd be glad to hear from you.</p>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a href="mailto:abdulrazzaqayesha149@gmail.com" class="btn-main"><i
+                            class="bi bi-envelope-fill me-2"></i>Email me</a>
+                    <a href="https://github.com/ayesharazzaq239" target="_blank" rel="noopener"
+                        class="btn-line on-light"><i class="bi bi-github me-2"></i>GitHub</a>
+                </div>
+                <ul class="contact-list">
+                    <li><i class="bi bi-envelope-fill"></i>abdulrazzaqayesha149@gmail.com</li>
+                    <li><i class="bi bi-geo-alt-fill"></i>Karachi, Pakistan</li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Bootstrap 5 JavaScript -->
+    <footer>&copy; 2026 Ayesha Razzaq</footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            document.getElementById('formAlert').classList.remove('d-none');
-            this.reset();
+        // Close the mobile menu after clicking a link
+        const navCollapse = document.getElementById('navbarNav');
+        document.querySelectorAll('#navbarNav a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (navCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getOrCreateInstance(navCollapse).hide();
+                }
+            });
         });
     </script>
 </body>
